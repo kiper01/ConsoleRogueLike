@@ -6,10 +6,7 @@ namespace ConsoleRogueLike.Entities
     {
         private readonly IGameScene _sceneReader;
         public Exit(char symbol, Vector point, IGameScene sceneReader)
-            : base(symbol, point)
-        {
-            _sceneReader = sceneReader;
-        }
+            : base(symbol, point) => _sceneReader = sceneReader;
 
         public override void Update()
         {

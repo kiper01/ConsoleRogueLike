@@ -8,11 +8,7 @@ namespace ConsoleRogueLike.Entities
         private readonly IGameScene _sceneReader;
 
         public Melee(char symbol, Vector point, int health, IGameScene sceneReader, Random random)
-             : base(symbol, point, health, sceneReader)
-        {
-            _random = random;
-            _sceneReader = sceneReader;
-        }
+             : base(symbol, point, health, sceneReader) => (_random, _sceneReader) = (random, sceneReader);
 
         public override void Update()
         {

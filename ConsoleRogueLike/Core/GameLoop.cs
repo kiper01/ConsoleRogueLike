@@ -8,11 +8,7 @@ namespace ConsoleRogueLike.Core
         private readonly GameScene _scene;
         private readonly Player _player;
 
-        public GameLoop(GameScene scene, Player player)
-        {
-            _scene = scene;
-            _player = player;
-        }
+        public GameLoop(GameScene scene, Player player) => (_scene, _player) = (scene, player);
 
         public void Run()
         {

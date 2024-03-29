@@ -10,12 +10,7 @@ namespace ConsoleRogueLike.Core
         private readonly IGameScene _sceneReader;
         private readonly Random _random;
 
-        public UnitSpawner(GameObjectFactory factory, IGameScene sceneReader, Random random)
-        {
-            _factory = factory;
-            _sceneReader = sceneReader;
-            _random = random;
-        }
+        public UnitSpawner(GameObjectFactory factory, IGameScene sceneReader, Random random) => (_factory, _sceneReader, _random) = (factory, sceneReader, random);
 
         public void SpawnUnits(int numMelees)
         {

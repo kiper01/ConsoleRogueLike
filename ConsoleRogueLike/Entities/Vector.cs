@@ -7,11 +7,7 @@ namespace ConsoleRogueLike.Entities
         public int X { get; set; }
         public int Y { get; set; }
 
-        public Vector(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
+        public Vector(int x, int y) => (X, Y) = (x, y);
 
         public static Vector operator +(Vector a, Vector b)
         {

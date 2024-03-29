@@ -8,11 +8,7 @@ namespace ConsoleRogueLike.Entities
         public int Health { get; protected set; }
 
         public GameEnemy(char symbol, Vector point, int health, IGameScene sceneReader)
-            : base(symbol, point)
-        {
-            Health = health;
-            _sceneReader = sceneReader;
-        }
+            : base(symbol, point) => (Health, _sceneReader) = (health, sceneReader);
 
         public virtual void Move(Vector direction)
         {

@@ -8,10 +8,7 @@ namespace ConsoleRogueLike.Entities
         private readonly IGameScene _sceneReader;
 
         public Player(char symbol, Vector point, int health, IGameScene sceneReader)
-             : base(symbol, point, health, sceneReader)
-        {
-            _sceneReader = sceneReader;
-        }
+             : base(symbol, point, health, sceneReader) => _sceneReader = sceneReader;
 
         public void SetStartPoint()
         {

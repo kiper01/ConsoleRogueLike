@@ -33,7 +33,6 @@ namespace ConsoleRogueLike.Core
         {
             var exit = new Exit('E', point, sceneReader);
             OnGameObjectCreated?.Invoke(exit);
-            //return exit;
         }
     }
 }

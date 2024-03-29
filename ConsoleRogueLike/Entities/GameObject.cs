@@ -7,11 +7,7 @@ namespace ConsoleRogueLike.Entities
         public char Symbol { get; protected set; }
         public Vector Point { get; protected set; }
 
-        public GameObject(char symbol, Vector point)
-        {
-            Symbol = symbol;
-            Point = point;
-        }
+        public GameObject(char symbol, Vector point) => (Symbol, Point) = (symbol, point);
 
         public virtual void Update() {}
     }
