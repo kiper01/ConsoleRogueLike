@@ -6,15 +6,14 @@ namespace ConsoleRogueLike.Core
     {
         private readonly GameObjectFactory _factory;
         private readonly Random _random;
-        private readonly int _width, _height;
+        private readonly Vector _area;
         private readonly int[,] _maze;
 
-        public MazeGenerator(GameObjectFactory factory, int width, int height, Random random)
+        public MazeGenerator(GameObjectFactory factory, Vector area, Random random)
         {
             _factory = factory;
-            _width = width;
-            _height = height;
-            _maze = new int[width, height];
+            _area = area;
+            _maze = new int[area.X, area.Y];
             _random = random;
         }
 
@@ -27,8 +26,8 @@ namespace ConsoleRogueLike.Core
 
         private void InitializeMaze()
         {
-            for (int x = 0; x < _width; x++)
-                for (int y = 0; y < _height; y++)
+            for (int x = 0; x < _area.X; x++)
+                for (int y = 0; y < _area.Y; y++)
                     _maze[x, y] = 1;
         }
 
@@ -36,8 +35,8 @@ namespace ConsoleRogueLike.Core
         {
             var walls = new List<Vector>();
 
-            int startX = _random.Next(1, _width - 1);
-            int startY = _random.Next(1, _height - 1);
+            int startX = _random.Next(1, _area.X - 1);
+            int startY = _random.Next(1, _area.Y - 1);
             _maze[startX, startY] = 0;
 
             AddWallsToList(startX, startY, walls);
@@ -71,16 +70,16 @@ namespace ConsoleRogueLike.Core
         private void AddWallsToList(int x, int y, List<Vector> walls)
         {
             if (x - 1 > 0 && _maze[x - 1, y] == 1) walls.Add(new Vector(x - 1, y));
-            if (x + 1 < _width - 1 && _maze[x + 1, y] == 1) walls.Add(new Vector(x + 1, y));
+            if (x + 1 < _area.X - 1 && _maze[x + 1, y] == 1) walls.Add(new Vector(x + 1, y));
             if (y - 1 > 0 && _maze[x, y - 1] == 1) walls.Add(new Vector(x, y - 1));
-            if (y + 1 < _height - 1 && _maze[x, y + 1] == 1) walls.Add(new Vector(x, y + 1));
+            if (y + 1 < _area.Y - 1 && _maze[x, y + 1] == 1) walls.Add(new Vector(x, y + 1));
         }
 
         private void AddWallsToScene()
         {
-            for (int y = 0; y < _height; y++)
+            for (int y = 0; y < _area.Y; y++)
             {
-                for (int x = 0; x < _width; x++)
+                for (int x = 0; x < _area.X; x++)
                 {
                     if (_maze[x, y] == 1)
                         _factory.CreateWall(new Vector(x, y));

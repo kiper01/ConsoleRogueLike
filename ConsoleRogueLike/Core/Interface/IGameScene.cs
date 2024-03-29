@@ -5,8 +5,7 @@ namespace ConsoleRogueLike.Core.Interface
     public interface IGameScene
     {
         IReadOnlyList<GameObject> GameObjects { get; }
-        int Width { get; }
-        int Height { get; }
+        Vector Area { get; }
         bool IsPointFree(Vector point);
         List<GameObject> GetObjectsAround(Vector point);
         GameObject? GetObjectAtPoint(Vector point);

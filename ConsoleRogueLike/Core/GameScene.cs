@@ -8,17 +8,15 @@ namespace ConsoleRogueLike.Core
         private readonly List<GameObject> _gameObjects = new();
         public IReadOnlyList<GameObject> GameObjects => _gameObjects;
 
-        public int Width { get; private set; }
-        public int Height { get; private set; }
+        public Vector Area { get; private set; }
 
         private readonly GameObjectFactory _factory;
         private readonly Random _random;
 
-        public GameScene(int width, int height, GameObjectFactory factory, Random random)
+        public GameScene(Vector area, GameObjectFactory factory, Random random)
         {
-            Width = width;
-            Height = height;
-            _gameObjects = new List<GameObject>(width * height);
+            Area = area;
+            _gameObjects = new List<GameObject>(area.X * area.Y);
             _random = random;
             _factory = factory;
 
@@ -31,7 +29,7 @@ namespace ConsoleRogueLike.Core
         {
             _gameObjects.Clear();
 
-            MazeGenerator generator = new(_factory, Width, Height, _random);
+            MazeGenerator generator = new(_factory, Area, _random);
             UnitSpawner generator2 = new(_factory, this, _random);
 
             generator.GenerateMaze();
@@ -85,7 +83,7 @@ namespace ConsoleRogueLike.Core
 
             return offsets
                 .Select(offset => point + offset)
-                .Where(pos => pos.X >= 0 && pos.X < Width && pos.Y >= 0 && pos.Y < Height)
+                .Where(pos => pos.X >= 0 && pos.X < Area.X && pos.Y >= 0 && pos.Y < Area.Y)
                 .SelectMany(pos => _gameObjects.Where(obj => obj.Point.Equals(pos)))
                 .ToList();
         }

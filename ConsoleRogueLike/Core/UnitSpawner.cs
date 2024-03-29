@@ -22,8 +22,8 @@ namespace ConsoleRogueLike.Core
         {
             for (int i = numMelees; i != 0;)
             {
-                int x = _random.Next(_sceneReader.Width);
-                int y = _random.Next(_sceneReader.Height);
+                int x = _random.Next(_sceneReader.Area.X);
+                int y = _random.Next(_sceneReader.Area.Y);
                 Vector point = new Vector(x, y);
 
                 if (_sceneReader.IsPointFree(point))
@@ -38,8 +38,8 @@ namespace ConsoleRogueLike.Core
         {
             for (int i = 1; i != 0;)
             {
-                int x = _random.Next(_sceneReader.Width);
-                int y = _random.Next(_sceneReader.Height);
+                int x = _random.Next(_sceneReader.Area.X);
+                int y = _random.Next(_sceneReader.Area.Y);
                 Vector point = new Vector(x, y);
 
                 if (_sceneReader.IsPointFree(point))

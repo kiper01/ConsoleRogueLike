@@ -12,11 +12,11 @@ namespace ConsoleRogueLike.Core
         {
             Console.CursorVisible = false;
 
-            char[,] display = new char[scene.Height, scene.Width];
+            char[,] display = new char[scene.Area.Y, scene.Area.X];
 
-            for (int y = 0; y < scene.Height; y++)
+            for (int y = 0; y < scene.Area.Y; y++)
             {
-                for (int x = 0; x < scene.Width; x++)
+                for (int x = 0; x < scene.Area.X; x++)
                 {
                     display[y, x] = ' ';
                 }
@@ -37,9 +37,9 @@ namespace ConsoleRogueLike.Core
                 }
             }
 
-            for (int y = 0; y < scene.Height; y++)
+            for (int y = 0; y < scene.Area.Y; y++)
             {
-                for (int x = 0; x < scene.Width; x++)
+                for (int x = 0; x < scene.Area.X; x++)
                 {
                     if (lastDisplay == null || display[y, x] != lastDisplay[y, x])
                     {
@@ -51,7 +51,7 @@ namespace ConsoleRogueLike.Core
 
             lastDisplay = (char[,])display.Clone();
 
-            Console.SetCursorPosition(0, scene.Height);
+            Console.SetCursorPosition(0, scene.Area.Y);
             Console.Write($"Health: {playerHealth}");
         }
     }
