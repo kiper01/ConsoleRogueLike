@@ -77,7 +77,7 @@ namespace ConsoleRogueLike.Core
 
                 if (gameObject is Player && gameObject.Point.X == scene.Area.X - 2 && gameObject.Point.Y == scene.Area.Y- 2)
                 {
-                    scene.Finished();
+                    scene.AtFinish();
                 }
             }
         }

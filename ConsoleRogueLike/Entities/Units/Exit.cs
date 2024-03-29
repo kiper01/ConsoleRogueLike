@@ -15,7 +15,7 @@ namespace ConsoleRogueLike.Entities
 
             if (player != null)
             {
-                _sceneReader.Finished();
+                _sceneReader.AtFinish();
             }
         }
     }

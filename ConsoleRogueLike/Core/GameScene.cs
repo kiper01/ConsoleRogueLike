@@ -36,7 +36,7 @@ namespace ConsoleRogueLike.Core
             generator2.SpawnUnits(3);
         }
 
-        public void Finished()
+        public void AtFinish()
         {
             var player = _gameObjects.OfType<Player>().FirstOrDefault();
             
